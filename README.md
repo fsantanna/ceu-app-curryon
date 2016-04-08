@@ -1,5 +1,7 @@
 # Presented at "Curry-On" (2015)
 
+https://www.youtube.com/watch?v=aivVg9WMuMs
+
 ## Compiling and Running
 
 ```
