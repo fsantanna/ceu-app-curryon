@@ -1,5 +1,5 @@
 #define HEADER_TITLE "Ball - 06"    // class, 2p, graph
-#include "header.ceu"
+#include "header.ceu.inc"
 
 #define DCL_INT(a,v)                 \
     var Integral_Over_Time _ with    \
@@ -233,7 +233,7 @@ with
         end
     end
 with
-    #include "click.ceu"
+    #include "click.ceu.inc"
 with
     every SDL_REDRAW do
         _SDL_RenderPresent(_REN);

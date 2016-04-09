@@ -1,10 +1,10 @@
-#define HEADER_TITLE "Ball - 03"
-#include "header.ceu"
+#define HEADER_TITLE "Ball - OK"
+#include "header.ceu.inc"
 
-#define DCL_INT(a,v)                \
-    var Integral_Over_Time _ with   \
-        this.accumulator = &a;      \
-        this.value       = &v;      \
+#define DCL_INT(a,v)                 \
+    var Integral_Over_Time _ with    \
+        this.accumulator = &a;       \
+        this.value       = &v;       \
     end
 
 class Integral_Over_Time with
@@ -35,24 +35,34 @@ var Ball ball = Ball(130,130,8);
 par/or do
     await SDL_QUIT;
 with
-    await SDL_MOUSEBUTTONDOWN;  /* wait for the starting click */
+    await SDL_MOUSEBUTTONDOWN;
 
-    do
-        var float velocity=30, acceleration=30;
-        DCL_INT(velocity, acceleration);
-        DCL_INT(ball.x,   velocity);
-
-        await SDL_MOUSEBUTTONDOWN;  /* wait for the turn click */
+    loop do
+        do
+            var float velocity=30, acceleration=30;
+            DCL_INT(velocity, acceleration);
+            DCL_INT(ball.x,   velocity);
+            await SDL_MOUSEBUTTONDOWN;
+        end
+        do
+            var float velocity=30, acceleration=30;
+            DCL_INT(velocity, acceleration);
+            DCL_INT(ball.y,   velocity);
+            await SDL_MOUSEBUTTONDOWN;
+        end
+        do
+            var float velocity=-30, acceleration=-30;
+            DCL_INT(velocity, acceleration);
+            DCL_INT(ball.x,   velocity);
+            await SDL_MOUSEBUTTONDOWN;
+        end
+        do
+            var float velocity=-30, acceleration=-30;
+            DCL_INT(velocity, acceleration);
+            DCL_INT(ball.y,   velocity);
+            await SDL_MOUSEBUTTONDOWN;
+        end
     end
-
-    do
-        var float velocity=30, acceleration=30;
-        DCL_INT(velocity, acceleration);
-        DCL_INT(ball.y,   velocity);
-
-        await SDL_MOUSEBUTTONDOWN;  /* wait for the turn click */
-    end
-    await FOREVER;
 with
     every TRAIL_MS ms do
         pts[pts_nxt].x = ball.x;
@@ -73,12 +83,12 @@ with
                                    0xBB,0xBB,0xBB,0xFF);
         end
         _filledCircleRGBA(_REN, (int)ball.x, (int)ball.y, (int)ball.radius,
-                               0x00,0x00,0x00,0xFF);
+                                0x00,0x00,0x00,0xFF);
 
         _SDL_RenderPresent(_REN);
     end
 with
-    #include "click.ceu"
+    #include "click.ceu.inc"
 end
 
 escape 0;

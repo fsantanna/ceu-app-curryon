@@ -1,5 +1,5 @@
-#define HEADER_TITLE "Ball - 02"
-#include "header.ceu"
+#define HEADER_TITLE "Ball - 03"
+#include "header.ceu.inc"
 
 #define DCL_INT(a,v)                \
     var Integral_Over_Time _ with   \
@@ -37,16 +37,21 @@ par/or do
 with
     await SDL_MOUSEBUTTONDOWN;  /* wait for the starting click */
 
-    var float velocity=20, acceleration=20;
-    DCL_INT(velocity, acceleration);
-    DCL_INT(ball.x,   velocity);
+    do
+        var float velocity=30, acceleration=30;
+        DCL_INT(velocity, acceleration);
+        DCL_INT(ball.x,   velocity);
 
-    await SDL_MOUSEBUTTONDOWN;  /* wait for the turn click */
+        await SDL_MOUSEBUTTONDOWN;  /* wait for the turn click */
+    end
 
-    var float velocity=20, acceleration=20;
-    DCL_INT(velocity, acceleration);
-    DCL_INT(ball.y,   velocity);
+    do
+        var float velocity=30, acceleration=30;
+        DCL_INT(velocity, acceleration);
+        DCL_INT(ball.y,   velocity);
 
+        await SDL_MOUSEBUTTONDOWN;  /* wait for the turn click */
+    end
     await FOREVER;
 with
     every TRAIL_MS ms do
@@ -73,7 +78,7 @@ with
         _SDL_RenderPresent(_REN);
     end
 with
-    #include "click.ceu"
+    #include "click.ceu.inc"
 end
 
 escape 0;

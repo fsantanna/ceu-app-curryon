@@ -1,5 +1,5 @@
 #define HEADER_TITLE "LED - 01 (blinking)"
-#include "header.ceu"
+#include "header.ceu.inc"
 
 var bool is_on = false;
 
